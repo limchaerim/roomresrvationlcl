@@ -40,21 +40,6 @@ public class PolicyHandler {
 
     @StreamListener(
         value = KafkaProcessor.INPUT,
-        condition = "headers['type']=='AccommodationCanceled'"
-    )
-    public void wheneverAccommodationCanceled_ReserveSaga(
-        @Payload AccommodationCanceled accommodationCanceled
-    ) {
-        AccommodationCanceled event = accommodationCanceled;
-        System.out.println(
-            "\n\n##### listener ReserveSaga : " + accommodationCanceled + "\n\n"
-        );
-        // Sample Logic //
-
-    }
-
-    @StreamListener(
-        value = KafkaProcessor.INPUT,
         condition = "headers['type']=='StatusChangeCompleted'"
     )
     public void wheneverStatusChangeCompleted_ReserveSaga(
@@ -130,12 +115,12 @@ public class PolicyHandler {
 
     @StreamListener(
         value = KafkaProcessor.INPUT,
-        condition = "headers['type']=='Payment'"
+        condition = "headers['type']=='Paymented'"
     )
-    public void wheneverPayment_ReserveSaga(@Payload Payment payment) {
-        Payment event = payment;
+    public void wheneverPaymented_ReserveSaga(@Payload Paymented paymented) {
+        Paymented event = paymented;
         System.out.println(
-            "\n\n##### listener ReserveSaga : " + payment + "\n\n"
+            "\n\n##### listener ReserveSaga : " + paymented + "\n\n"
         );
         // Sample Logic //
 

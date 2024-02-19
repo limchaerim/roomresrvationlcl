@@ -6,7 +6,6 @@ import java.util.List;
 import javax.persistence.*;
 import lombok.Data;
 import roomresrvationlcl.ScreenApplication;
-import roomresrvationlcl.domain.AccommodationCanceled;
 import roomresrvationlcl.domain.AccommodationReserved;
 import roomresrvationlcl.domain.StatusChangeCompleted;
 
@@ -44,11 +43,6 @@ public class Accommodation {
 
     @PostUpdate
     public void onPostUpdate() {
-        AccommodationCanceled accommodationCanceled = new AccommodationCanceled(
-            this
-        );
-        accommodationCanceled.publishAfterCommit();
-
         StatusChangeCompleted statusChangeCompleted = new StatusChangeCompleted(
             this
         );

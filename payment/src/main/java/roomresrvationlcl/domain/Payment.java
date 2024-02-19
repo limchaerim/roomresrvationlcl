@@ -6,8 +6,8 @@ import java.util.List;
 import javax.persistence.*;
 import lombok.Data;
 import roomresrvationlcl.PaymentApplication;
-import roomresrvationlcl.domain.Payment;
 import roomresrvationlcl.domain.PaymentCancellation;
+import roomresrvationlcl.domain.Paymented;
 
 @Entity
 @Table(name = "Payment_table")
@@ -40,8 +40,8 @@ public class Payment {
 
     @PreUpdate
     public void onPreUpdate() {
-        Payment payment = new Payment(this);
-        payment.publishAfterCommit();
+        Paymented paymented = new Paymented(this);
+        paymented.publishAfterCommit();
     }
 
     public static PaymentRepository repository() {
